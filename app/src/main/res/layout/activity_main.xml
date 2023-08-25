@@ -27,8 +27,8 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="10dp"
         android:ems="10"
-        android:text=""
         android:inputType="textPassword"
+        android:text=""
         app:layout_constraintBottom_toTopOf="@id/signBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,8 +63,8 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="10dp"
         android:ems="10"
-        android:text=""
         android:inputType="textPersonName"
+        android:text=""
         app:layout_constraintBottom_toTopOf="@id/passText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,12 +74,23 @@
         android:id="@+id/loginBtn3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="login"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/infoId"
         app:layout_constraintHorizontal_bias="0.312"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editTextPassword" />
+
+
+    <TextView
+        android:id="@+id/infoId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="New to Tutlane? Register here"
+        app:layout_constraintTop_toBottomOf="@id/loginBtn3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
