@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class signup extends AppCompatActivity {
     Button signupBtn;
@@ -32,14 +33,20 @@ public class signup extends AppCompatActivity {
         signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String Name = name.getText().toString();
                 String Email = email.getText().toString();
                 String Pass = password.getText().toString();
+                if(Email.isEmpty() || Pass.isEmpty()|| Name.isEmpty()){
+                    Toast.makeText(getApplicationContext(),"Enter all the fields",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),"Signup Successful",Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(signup.this, MainActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("Email", Email);
                 bundle.putString("Pass", Pass);
                 intent.putExtras(bundle);
-                startActivity(intent);
+                startActivity(intent);}
             }
         });
         TextView iiinfo =(TextView) findViewById(R.id.IIInfo);

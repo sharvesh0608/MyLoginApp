@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,13 +24,15 @@ public class MainActivity extends AppCompatActivity {
         email = (EditText) findViewById(R.id.editTextEmail);
         password = (EditText) findViewById(R.id.editTextPassword);
         Bundle bundle = getIntent().getExtras();
+
         if (bundle != null) {
-            String Email = bundle.getString("Email", "Default");
-            String Password = bundle.getString("Pass", " Default");
+             String Email = bundle.getString("Email", "Default");
+             String Password = bundle.getString("Pass", " Default");
             email.setText(Email);
             password.setText(Password);
         }
         Button LoginBtn44 = (Button) findViewById(R.id.loginBtn3);
+        TextView infoid =(TextView)findViewById(R.id.infoId) ;
         LoginBtn44.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -38,6 +41,16 @@ public class MainActivity extends AppCompatActivity {
 
 
         });
+
+        infoid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,signup.class);
+                startActivity(intent);
+            }
+        });
+
+
 
 
     }
