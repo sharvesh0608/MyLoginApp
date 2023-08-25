@@ -90,6 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:textSize="15sp"
+        android:textColor="@color/purple_700"
         android:text="New to Tutlane? Register here"
         app:layout_constraintTop_toBottomOf="@id/loginBtn3"
         app:layout_constraintStart_toStartOf="parent"
