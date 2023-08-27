@@ -57,9 +57,11 @@ public class LogIn extends AppCompatActivity {
                     String enteredEmail = email.getText().toString();
                     String enteredPassword = password.getText().toString();
 
-                    DatabaseHelper dbHelper = new DatabaseHelper(LogIn.this);
+                    if (enteredEmail.isEmpty() || enteredPassword.isEmpty()) {
+                        Toast.makeText(getApplicationContext(), "Both email and password are required", Toast.LENGTH_SHORT).show();
+                    } else if (isValidEmail(enteredEmail) && isValidPassword(enteredPassword)) {
+                        DatabaseHelper dbHelper = new DatabaseHelper(LogIn.this);
 
-                    if (isValidEmail(enteredEmail) && isValidPassword(enteredPassword)) {
                         if (dbHelper.verifyCredentials(enteredEmail, enteredPassword)) {
                             // Valid credentials: Store in shared preferences and navigate to the main screen
                             SharedPreferences.Editor editor = sharedPreferences.edit();

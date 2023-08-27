@@ -37,46 +37,35 @@ public class signup extends AppCompatActivity {
                 String Email = email.getText().toString();
                 String Pass = password.getText().toString();
                 String Mob = mob.getText().toString();
-                if (!isValidName(Name)) {
-                    Toast.makeText(getApplicationContext(), "Invalid First & Last Name (only characters allowed)", Toast.LENGTH_SHORT).show();
-                }
-//                // Validate mobile number
-                else if (!isValidMobile(Mob)) {
+
+                if (Name.isEmpty() || Email.isEmpty() || Pass.isEmpty() || Mob.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "All fields are required", Toast.LENGTH_SHORT).show();
+                } else if (!isValidName(Name)) {
+                    Toast.makeText(getApplicationContext(), "Invalid Name (only characters allowed)", Toast.LENGTH_SHORT).show();
+                } else if (!isValidMobile(Mob)) {
                     Toast.makeText(getApplicationContext(), "Invalid Mobile Number (only valid numbers allowed)", Toast.LENGTH_SHORT).show();
-                }
-                // Validate email
-                else if (!isValidEmail(Email)) {
+                } else if (!isValidEmail(Email)) {
                     Toast.makeText(getApplicationContext(), "Invalid Email Address", Toast.LENGTH_SHORT).show();
-                }
-                // Validate password
-                else if (!isValidPassword(Pass)) {
+                } else if (!isValidPassword(Pass)) {
                     Toast.makeText(getApplicationContext(), "Invalid Password (at least 8 characters required)", Toast.LENGTH_SHORT).show();
                 } else {
                     // Perform sign-up and navigation logic here
-                    if (Email.isEmpty() || Pass.isEmpty() || Name.isEmpty()) {
-                        Toast.makeText(getApplicationContext(), "Enter all the fields", Toast.LENGTH_SHORT).show();
+                    DatabaseHelper dbHelper = new DatabaseHelper(signup.this);
+                    long result = dbHelper.insertUser(Name, Email, Mob, Pass);
+                    if (result != -1) {
+                        Toast.makeText(getApplicationContext(), "Signup Successful and Data Inserted into DB", Toast.LENGTH_SHORT).show();
+                        // Rest of your navigation code
                     } else {
-
-                        DatabaseHelper dbHelper = new DatabaseHelper(signup.this);
-                        long result = dbHelper.insertUser(Name, Email, Mob, Pass);
-                        if (result != -1) {
-                            Toast.makeText(getApplicationContext(), "Signup Successful and Data Inserted into DB", Toast.LENGTH_SHORT).show();
-                            // Rest of your navigation code
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Error inserting data into DB", Toast.LENGTH_SHORT).show();
-                        }
-                        //Toast.makeText(getApplicationContext(), "Signup Successful", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(signup.this, LogIn.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putString("Email", Email);
-                        bundle.putString("Pass", Pass);
-                        intent.putExtras(bundle);
-                        startActivity(intent);
+                        Toast.makeText(getApplicationContext(), "Error inserting data into DB", Toast.LENGTH_SHORT).show();
                     }
+                    Intent intent = new Intent(signup.this, LogIn.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("Email", Email);
+                    bundle.putString("Pass", Pass);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
                 }
             }
-
-
         });
         TextView iiinfo = (TextView) findViewById(R.id.IIInfo);
         iiinfo.setOnClickListener(new View.OnClickListener() {
