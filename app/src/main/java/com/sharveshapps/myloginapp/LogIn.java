@@ -92,6 +92,7 @@ public class LogIn extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(LogIn.this, signup.class);
                     startActivity(intent);
+
                 }
             });
         }

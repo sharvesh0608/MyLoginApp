@@ -64,6 +64,7 @@ public class signup extends AppCompatActivity {
                     bundle.putString("Pass", Pass);
                     intent.putExtras(bundle);
                     startActivity(intent);
+                    finish();
                 }
             }
         });
