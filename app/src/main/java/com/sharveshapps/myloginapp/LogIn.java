@@ -99,6 +99,11 @@ public class LogIn extends AppCompatActivity {
 
 
     }
+    @Override
+    public void onBackPressed() {
+        // Close the entire app when back button is pressed on the login screen
+        finishAffinity();
+    }
 
     @Override
     protected void onStart() {
