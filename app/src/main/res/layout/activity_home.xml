@@ -3,12 +3,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:tabTextColor="@color/white"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:visibility="visible" />
     <androidx.cardview.widget.CardView
         android:id="@+id/HeadCardView"
         android:background="#FFC107"
         android:layout_width="match_parent"
         app:cardCornerRadius="8dp"
+        android:layout_below="@id/tabLayout"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:elevation="4dp">
@@ -52,14 +62,12 @@
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/HeadCardView"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="8dp"
-        tools:listitem="@layout/student_hs_rv" />
+        android:layout_below="@id/HeadCardView" />
+
+
 
 </RelativeLayout>

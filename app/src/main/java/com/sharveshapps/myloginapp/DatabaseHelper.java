@@ -90,4 +90,53 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return userList;
     }
+
+    public List<User> getUsersWithEvenPosition() {
+        List<User> evenUserList = new ArrayList<>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {COLUMN_ID, COLUMN_NAME, COLUMN_EMAIL, COLUMN_MOBILE, COLUMN_PASSWORD};
+        String selection = COLUMN_ID + " % 2 = 0"; // Fetch rows with even positions
+        Cursor cursor = db.query(TABLE_USERS, columns, selection, null, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                User user = new User();
+                user.setId(cursor.getInt(cursor.getColumnIndex(COLUMN_ID)));
+                user.setName(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)));
+                user.setEmail(cursor.getString(cursor.getColumnIndex(COLUMN_EMAIL)));
+                user.setMobile(cursor.getString(cursor.getColumnIndex(COLUMN_MOBILE)));
+                user.setPassword(cursor.getString(cursor.getColumnIndex(COLUMN_PASSWORD)));
+                evenUserList.add(user);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        return evenUserList;
+    }
+
+    public List<User> getUsersWithOddPosition() {
+        List<User> oddUserList = new ArrayList<>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {COLUMN_ID, COLUMN_NAME, COLUMN_EMAIL, COLUMN_MOBILE, COLUMN_PASSWORD};
+        String selection = COLUMN_ID + " % 2 = 1"; // Fetch rows with odd positions
+        Cursor cursor = db.query(TABLE_USERS, columns, selection, null, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                User user = new User();
+                user.setId(cursor.getInt(cursor.getColumnIndex(COLUMN_ID)));
+                user.setName(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)));
+                user.setEmail(cursor.getString(cursor.getColumnIndex(COLUMN_EMAIL)));
+                user.setMobile(cursor.getString(cursor.getColumnIndex(COLUMN_MOBILE)));
+                user.setPassword(cursor.getString(cursor.getColumnIndex(COLUMN_PASSWORD)));
+                oddUserList.add(user);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        return oddUserList;
+    }
+
 }

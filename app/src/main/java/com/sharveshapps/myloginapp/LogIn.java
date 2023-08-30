@@ -31,7 +31,7 @@ public class LogIn extends AppCompatActivity {
             finish(); // Close this activity to prevent going back to the login screen
         } else {
             // Credentials are not available, show the login screen
-            setContentView(R.layout.activity_main);
+            setContentView(R.layout.activity_login);
 
             // The rest of your existing code for setting up the login screen
             // ...
@@ -99,6 +99,7 @@ public class LogIn extends AppCompatActivity {
 
 
     }
+
     @Override
     public void onBackPressed() {
         // Close the entire app when back button is pressed on the login screen

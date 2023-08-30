@@ -41,7 +41,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
     public static class UserViewHolder extends RecyclerView.ViewHolder {
         TextView textName, textEmail, textMobile, textPass;
-        // Declare other TextViews for other columns
 
         public UserViewHolder(@NonNull View itemView) {
             super(itemView);
