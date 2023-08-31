@@ -41,7 +41,7 @@
         android:layout_marginBottom="10dp"
         android:ems="12"
         android:hint=""
-        android:inputType="textEmailAddress"
+        android:inputType="phone"
         app:layout_constraintBottom_toTopOf="@id/emailtext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.512"
@@ -106,7 +106,6 @@
         android:layout_height="wrap_content"
         android:text="Mobile No"
         android:textSize="20sp"
-        android:inputType="phone"
         app:layout_constraintBottom_toTopOf="@id/editTextMob"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.257"
@@ -152,5 +151,6 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signBtn" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
