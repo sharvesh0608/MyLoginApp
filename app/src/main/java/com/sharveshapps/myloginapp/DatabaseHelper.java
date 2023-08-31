@@ -68,28 +68,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count > 0;
 
     }
-    public List<User> getAllUsers() {
-        List<User> userList = new ArrayList<>();
-        String selectQuery = "SELECT * FROM " + TABLE_USERS;
 
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
-
-        if (cursor.moveToFirst()) {
-            do {
-                User user = new User();
-                user.setId(cursor.getInt(cursor.getColumnIndex(COLUMN_ID)));
-                user.setName(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)));
-                user.setEmail(cursor.getString(cursor.getColumnIndex(COLUMN_EMAIL)));
-                user.setMobile(cursor.getString(cursor.getColumnIndex(COLUMN_MOBILE)));
-                user.setPassword(cursor.getString(cursor.getColumnIndex(COLUMN_PASSWORD)));
-                userList.add(user);
-            } while (cursor.moveToNext());
-        }
-
-        cursor.close();
-        return userList;
-    }
+//    public List<User> getAllUsers() {
+//        List<User> userList = new ArrayList<>();
+//        String selectQuery = "SELECT * FROM " + TABLE_USERS;
+//
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        Cursor cursor = db.rawQuery(selectQuery, null);
+//
+//        if (cursor.moveToFirst()) {
+//            do {
+//                User user = new User();
+//                user.setId(cursor.getInt(cursor.getColumnIndex(COLUMN_ID)));
+//                user.setName(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)));
+//                user.setEmail(cursor.getString(cursor.getColumnIndex(COLUMN_EMAIL)));
+//                user.setMobile(cursor.getString(cursor.getColumnIndex(COLUMN_MOBILE)));
+//                user.setPassword(cursor.getString(cursor.getColumnIndex(COLUMN_PASSWORD)));
+//                userList.add(user);
+//            } while (cursor.moveToNext());
+//        }
+//
+//        cursor.close();
+//        return userList;
+//    }
 
     public List<User> getUsersWithEvenPosition() {
         List<User> evenUserList = new ArrayList<>();
@@ -102,11 +103,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 User user = new User();
-                user.setId(cursor.getInt(cursor.getColumnIndex(COLUMN_ID)));
-                user.setName(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)));
-                user.setEmail(cursor.getString(cursor.getColumnIndex(COLUMN_EMAIL)));
-                user.setMobile(cursor.getString(cursor.getColumnIndex(COLUMN_MOBILE)));
-                user.setPassword(cursor.getString(cursor.getColumnIndex(COLUMN_PASSWORD)));
+                user.setId(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID)));
+                user.setName(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME)));
+                user.setEmail(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EMAIL)));
+                user.setMobile(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_MOBILE)));
+                user.setPassword(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PASSWORD)));
                 evenUserList.add(user);
             } while (cursor.moveToNext());
         }
@@ -126,11 +127,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 User user = new User();
-                user.setId(cursor.getInt(cursor.getColumnIndex(COLUMN_ID)));
-                user.setName(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)));
-                user.setEmail(cursor.getString(cursor.getColumnIndex(COLUMN_EMAIL)));
-                user.setMobile(cursor.getString(cursor.getColumnIndex(COLUMN_MOBILE)));
-                user.setPassword(cursor.getString(cursor.getColumnIndex(COLUMN_PASSWORD)));
+                user.setId(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID)));
+                user.setName(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME)));
+                user.setEmail(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EMAIL)));
+                user.setMobile(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_MOBILE)));
+                user.setPassword(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PASSWORD)));
                 oddUserList.add(user);
             } while (cursor.moveToNext());
         }

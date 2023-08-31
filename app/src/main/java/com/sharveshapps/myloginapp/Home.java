@@ -29,7 +29,6 @@ public class Home extends AppCompatActivity {
 
         TabLayout tabLayout = findViewById(R.id.tabLayout);
         ViewPager viewPager = findViewById(R.id.viewPager);
-
         setupViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
 
@@ -41,6 +40,7 @@ public class Home extends AppCompatActivity {
 //        recyclerView.setAdapter(userAdapter);
 //        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
 //        recyclerView.setLayoutManager(layoutManager);
+
 
 
     }

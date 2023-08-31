@@ -2,6 +2,7 @@ package com.sharveshapps.myloginapp;
 
 import static android.content.ContentValues.TAG;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -63,8 +64,7 @@ public class signup extends AppCompatActivity {
                     bundle.putString("Email", Email);
                     bundle.putString("Pass", Pass);
                     intent.putExtras(bundle);
-                    startActivity(intent);
-                    finish();
+                    startActivityForResult(intent, 1);
                 }
             }
         });
@@ -78,6 +78,19 @@ public class signup extends AppCompatActivity {
         });
 
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            // Handle the result data from the LogIn activity
+            String loginResult = data.getStringExtra("loginResult");
+            if ("success".equals(loginResult)) {
+                // Handle successful login result if needed
+            }
+        }
     }
 
     @Override

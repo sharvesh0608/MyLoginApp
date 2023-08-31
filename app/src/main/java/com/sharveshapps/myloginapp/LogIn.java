@@ -68,9 +68,15 @@ public class LogIn extends AppCompatActivity {
                             editor.putString("email", enteredEmail);
                             editor.putString("password", enteredPassword);
                             editor.apply();
-                            Intent intent = new Intent(LogIn.this, Home.class);
-                            startActivity(intent);
-                            finish(); // Optional: close this activity to prevent going back to login screen
+
+                            Intent resultIntent = new Intent();
+                            resultIntent.putExtra("loginResult", "success"); // Optional: You can send any result data
+                            setResult(RESULT_OK, resultIntent);
+
+                            // Optionally, navigate to another activity or perform some actions
+                            Intent homeIntent = new Intent(LogIn.this, Home.class);
+                            startActivity(homeIntent);
+
                         } else {
                             // Invalid credentials: Show error message
                             Toast.makeText(getApplicationContext(), "Invalid credentials", Toast.LENGTH_SHORT).show();
